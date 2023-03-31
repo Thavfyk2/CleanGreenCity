@@ -3,7 +3,6 @@ package org.users;
 import java.text.DecimalFormat;
 
 public class Sponsor extends Participant {
-
     private final double donation;
     DecimalFormat df = new DecimalFormat("#.00");
 

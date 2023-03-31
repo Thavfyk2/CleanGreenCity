@@ -18,5 +18,4 @@ public interface Event {
     Date getBeginDate();
     Date setEndDate(Date date);
     Date getEndDate();
-
 }

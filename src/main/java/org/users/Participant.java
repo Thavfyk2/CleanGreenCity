@@ -1,7 +1,6 @@
 package org.users;
 
 import java.util.Objects;
-
 public class Participant {
 
     private String lastname;

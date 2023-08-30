@@ -1,7 +1,6 @@
 package com.org.cleangreencity.controller;
 
 import com.org.cleangreencity.CGCApplication;
-import com.org.cleangreencity.model.DashboardModel;
 import com.org.cleangreencity.model.UserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +22,6 @@ public class ConnexionPageController {
     public Scene scene;
 
     public static UserModel currentUser = new UserModel();
-    public static DashboardModel currentDashboard = new DashboardModel();
     @FXML
     public Button forgotPassword;
 

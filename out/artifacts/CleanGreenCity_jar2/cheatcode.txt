@@ -1,0 +1,29 @@
+Dear Users,
+
+In case our beautiful UI doesn't suit you, you can custom it yourself using cheatcode!
+
+You may type them in the CGCCmd by clicking on on CMD logo at the right, and escape keyboard button to exit.
+
+color_code is the RGB code of the color you want. Ex: #FFFFFF for White.
+
+CGCTrellu       
+
+---------------------------------------------------
+						
+Change the color of the background:
+SET BACKGROUND COLOR
+
+Change all writings including in buttons color :
+SET ALL LABEL AND BUTTON FONT COLOR color_code
+
+change all container background color:
+SET ALL PANE COLOR color_code
+
+Change all button background color:
+SET ALL BUTTON BACKGROUND COLOR color_code
+
+Change only wrintings color:
+SET ALL LABEL FONT COLOR color_code
+
+change only button writing color:
+SET ALL BUTTON FONT COLOR color_code

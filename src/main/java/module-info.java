@@ -8,6 +8,7 @@ module com.org.cleangreencity {
     requires com.fasterxml.jackson.databind;
     requires java.datatransfer;
     requires java.desktop;
+    requires mysql.connector.java;
 
     opens com.org.cleangreencity to javafx.fxml;
     exports com.org.cleangreencity;

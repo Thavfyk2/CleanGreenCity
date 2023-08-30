@@ -1,0 +1,28 @@
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-background-radius:20;
+    -fx-text-fill:white ;
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+}
+
+
+.list-cell:hover{
+    -fx-background-color:transparent;
+    -fx-text-fill:white ;
+    -fx-font-size: 13px;
+    -fx-alignment: center;
+    -fx-background-radius:20;
+    -fx-border-color: white;
+    -fx-border-radius:20;
+}
+
+.pane2{
+    -fx-background-color:linear-gradient(to bottom, #009a42, #017431);
+}
+
+.radius{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 2px ;
+}

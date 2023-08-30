@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.org.cleangreencity.controller.DashboardOfflineController">
+   <children>
+      <AnchorPane fx:id="rootPane" prefHeight="739.0" prefWidth="1257.0" style="-fx-background-color: #F1F1F1;">
+         <children>
+            <Pane layoutX="21.0" layoutY="49.0" prefHeight="57.0" prefWidth="233.0" style="-fx-background-color: white;" styleClass="radius" stylesheets="@../styles/Styles.css">
+               <children>
+                  <Label layoutX="63.0" layoutY="-5.0" prefHeight="67.0" prefWidth="122.0" text="TRELLU">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.7342539291049162">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.9959577114427861">
+                                 <color>
+                                    <Color green="0.5094339847564697" blue="0.21226415038108826" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.003921568859368563" green="0.45490196347236633" blue="0.1921568661928177" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.0978328213095665" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+               </children>
+            </Pane>
+            <MenuBar prefHeight="30.0" prefWidth="1269.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Export">
+                           <items>
+                              <MenuItem fx:id="exportJSON" mnemonicParsing="false" text="JSON" />
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Create a Task" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About">
+                           <graphic>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="V 0.0.1" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Text>
+                           </graphic>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <Pane layoutX="223.0" layoutY="49.0" prefHeight="57.0" prefWidth="1022.0" style="-fx-background-color: white;" styleClass="radius" stylesheets="@../styles/Styles.css" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="12.0">
+               <children>
+                  <TextField fx:id="search" layoutX="46.0" layoutY="14.0" prefHeight="30.0" prefWidth="315.0" promptText="Search" style="-fx-border-radius: 30;">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="welcomeLabel" alignment="TOP_RIGHT" layoutX="761.0" layoutY="22.0" prefHeight="15.0" prefWidth="124.0" text="Welcome, Guest">
+                     <font>
+                        <Font name="Ubuntu" size="12.307692527770996" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="887.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../image/avatardefault_92824.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="logOutButton" fitHeight="22.0" fitWidth="25.0" layoutX="983.0" layoutY="19.0" onMouseClicked="#disconnectOnAction">
+                     <image>
+                        <Image url="@../image/Exit-Page_icon-icons.com_53732.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="954.0" layoutY="19.0">
+                     <image>
+                        <Image url="@../image/fullscreen (1).png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="923.0" layoutY="18.0">
+                     <image>
+                        <Image url="@../image/dark-mode.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fitHeight="43.0" fitWidth="61.0" layoutX="24.0" layoutY="54.0">
+               <image>
+                  <Image url="@../image/Trello-Logo-2011.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="newTaskPane" layoutX="24.0" layoutY="165.0" prefHeight="275.0" prefWidth="176.0" stylesheets="@../styles/Styles.css">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <TextField fx:id="taskTitle" layoutX="10.0" layoutY="45.0" prefHeight="30.0" prefWidth="156.0" promptText="Title" style="-fx-border-radius: 30;">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="assignee" layoutX="10.0" layoutY="86.0" prefHeight="30.0" prefWidth="156.0" promptText="Assignee" style="-fx-border-radius: 30;">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextArea fx:id="taskDesc" layoutX="10.0" layoutY="127.0" prefHeight="103.0" prefWidth="156.0" promptText="Description" style="-fx-padding: 5;" styleClass="radius" />
+                  <Button fx:id="createTaskButton" layoutX="10.0" layoutY="240.0" mnemonicParsing="false" onAction="#validateNewTaskOnAction" prefHeight="22.0" prefWidth="156.0" style="-fx-background-color: white;" text="Create new task" textAlignment="CENTER" textFill="#009a42">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.09907121956348419" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="loginButton" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="41.0" layoutY="11.0" prefHeight="16.0" prefWidth="124.0" text="New task" textFill="WHITE">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="9.0" layoutY="6.0">
+                     <image>
+                        <Image url="@../image/presse-papiers.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="pane2" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </Pane>
+            <AnchorPane fx:id="rootAnchorPane" layoutX="211.0" layoutY="115.0" prefHeight="606.0" prefWidth="957.0" stylesheets="@../styles/Styles.css">
+               <children>
+                  <ListView fx:id="inProgressList" fixedCellSize="60.0" layoutX="264.0" layoutY="51.0" prefHeight="534.0" prefWidth="191.0">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="pane" />
+                        <String fx:value="dashList" />
+                     </styleClass>
+                  </ListView>
+                  <ListView fx:id="backlogList" fixedCellSize="60.0" layoutX="24.0" layoutY="51.0" prefHeight="534.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="pane" />
+                     </styleClass>
+                  </ListView>
+                  <ListView fx:id="toTestList" editable="true" fixedCellSize="60.0" layoutX="493.0" layoutY="51.0" prefHeight="534.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="pane" />
+                        <String fx:value="dashList" />
+                     </styleClass>
+                  </ListView>
+                  <ListView fx:id="doneList" fixedCellSize="60.0" layoutX="730.0" layoutY="51.0" prefHeight="534.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="radius" />
+                        <String fx:value="pane" />
+                        <String fx:value="dashList" />
+                     </styleClass>
+                  </ListView>
+                  <Label fx:id="inProgressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="298.0" layoutY="17.0" prefHeight="15.0" prefWidth="124.0" text="In progress">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="toTestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="531.0" layoutY="17.0" prefHeight="15.0" prefWidth="124.0" text="To test">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="doneLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="768.0" layoutY="17.0" prefHeight="15.0" prefWidth="124.0" text="Done">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="welcomeLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="17.0" prefHeight="15.0" prefWidth="124.0" text="Backlog">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="teamMember" layoutX="33.0" layoutY="339.0" prefHeight="30.0" prefWidth="156.0" promptText="Add team member" style="-fx-border-radius: 30;" stylesheets="@../styles/Styles.css" visible="false">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="1164.0" layoutY="351.0">
+               <image>
+                  <Image url="@../image/bin.png" />
+               </image>
+               <effect>
+                  <DropShadow height="40.25" radius="19.625" width="40.25" />
+               </effect>
+            </ImageView>
+            <ListView fx:id="deleteList" layoutX="1160.0" layoutY="346.0" opacity="0.0" prefHeight="75.0" prefWidth="72.0" style="-fx-background-color: transparent;">
+               <tooltip>
+                  <Tooltip height="15.0" text="Drag to delete task" width="10.0" wrapText="true">
+                     <font>
+                        <Font size="10.5" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
+            </ListView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="editTask" layoutX="530.0" layoutY="200.0" prefHeight="380.0" prefWidth="320.0" visible="false">
+         <children>
+            <Pane prefHeight="385.0" prefWidth="320.0" style="-fx-background-color: #F1F1F1; -fx-border-color: #009a42;" stylesheets="@../styles/Styles.css">
+               <children>
+                  <Label layoutX="20.0" prefHeight="67.0" prefWidth="211.0" text="Edit task">
+                     <font>
+                        <Font name="Arial Italic" size="19.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="0.8255813877249873" startX="1.0" startY="0.9086725278649223">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.9959577114427861">
+                                 <color>
+                                    <Color green="0.5094339847564697" blue="0.21226415038108826" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.0978328213095665" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="30.0" layoutY="262.0" prefHeight="34.0" prefWidth="272.0" textFill="#b90202">
+                     <font>
+                        <Font size="12.5" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="updateTaskTitle" layoutX="17.0" layoutY="77.0" prefHeight="30.0" prefWidth="279.0" style="-fx-border-radius: 30; -fx-background-color: white;">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="updateAssignee" layoutX="19.0" layoutY="132.0" prefHeight="30.0" prefWidth="272.0" style="-fx-border-radius: 30; -fx-background-color: white;">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </TextField>
+                  <TextArea fx:id="updateTaskDesc" layoutX="20.0" layoutY="188.0" prefHeight="103.0" prefWidth="272.0" style="-fx-padding: 5; -fx-background-color: white;" styleClass="radius" />
+                  <Label layoutX="26.0" layoutY="57.0" prefHeight="16.0" prefWidth="124.0" text="Title">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="111.0" prefHeight="16.0" prefWidth="124.0" text="Assignee">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="167.0" prefHeight="16.0" prefWidth="124.0" text="Description">
+                     <font>
+                        <Font name="Ubuntu" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="incorrectTitleText" alignment="CENTER" layoutX="20.0" layoutY="297.0" prefHeight="34.0" prefWidth="272.0" textFill="#b90202">
+                     <font>
+                        <Font size="12.5" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="495.0" prefWidth="664.0" style="-fx-background-color: white;" stylesheets="@../../../../../../Documents/ESGI_PA-2023/CleanGreenCity/src/main/resources/styles/Styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.org.cleangreencity.controller.ConnexionPageController">
+   <children>
+      <Pane layoutX="271.0" layoutY="15.0" prefHeight="460.0" prefWidth="374.0" style="-fx-background-color: #F1F1F1;">
+         <children>
+            <TextField fx:id="usernameTextField" layoutX="22.0" layoutY="145.0" prefHeight="34.0" prefWidth="283.0" promptText="Username" style="-fx-background-color: white;">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="passwordTextField" layoutX="23.0" layoutY="211.0" prefHeight="34.0" prefWidth="283.0" promptText="Password" style="-fx-background-color: white;" styleClass="text-input">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="incorrectEmailOrPasswordText" layoutX="40.0" layoutY="265.0" prefHeight="34.0" prefWidth="272.0" textFill="#b90202">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="connexionButton" layoutX="38.0" layoutY="301.0" mnemonicParsing="false" onAction="#connectButton" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: #009a42;" text="Sign in" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Ubuntu" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.09907121956348419" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="loginButton" />
+               </styleClass>
+            </Button>
+            <Button fx:id="inscriptionButton" layoutX="198.0" layoutY="301.0" mnemonicParsing="false" onAction="#switchToInscription" prefHeight="34.0" prefWidth="133.0" style="-fx-background-color: #A1A1A1;" text="Sign up" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.09907121956348419" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <styleClass>
+                  <String fx:value="loginButton" />
+                  <String fx:value="radius" />
+               </styleClass>
+            </Button>
+            <Label layoutX="26.0" layoutY="126.0" prefHeight="15.0" prefWidth="104.0" text="Username" textFill="#2d2d2d">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="192.0" prefHeight="15.0" prefWidth="104.0" text="Password" textFill="#2d2d2d">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="offlineButton" layoutX="121.0" layoutY="346.0" mnemonicParsing="false" onAction="#onOfflineButton" prefHeight="19.0" prefWidth="133.0" style="-fx-background-color: transparent;" text="Offline mode" textAlignment="CENTER" textFill="#009a42">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Ubuntu Italic" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.09907121956348419" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="offline" />
+               </styleClass>
+            </Button>
+            <Label layoutX="17.0" layoutY="59.0" prefHeight="67.0" prefWidth="122.0" text="Sign in">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.540455455003783">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9959577114427861">
+                           <color>
+                              <Color green="0.5094339847564697" blue="0.21226415038108826" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.003921568859368563" green="0.45490196347236633" blue="0.1921568661928177" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.0978328213095665" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Label>
+            <Button fx:id="forgotPassword" layoutX="20.0" layoutY="253.0" mnemonicParsing="false" onAction="#onForgotPassword" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: transparent;" text="Forgot your password?" textAlignment="CENTER" textFill="#009a42">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color opacity="0.09907121956348419" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <styleClass>
+                  <String fx:value="radius" />
+                  <String fx:value="offline" />
+               </styleClass>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="radius" />
+            <String fx:value="pane" />
+         </styleClass>
+      </Pane>
+      <Label layoutX="77.0" layoutY="280.0" prefHeight="67.0" prefWidth="122.0" text="TRELLU">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.540455455003783">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9959577114427861">
+                     <color>
+                        <Color green="0.5094339847564697" blue="0.21226415038108826" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.003921568859368563" green="0.45490196347236633" blue="0.1921568661928177" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.0978328213095665" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <ImageView layoutX="19.0" layoutY="121.0">
+         <image>
+            <Image url="@../image/Trello-Logo-2011.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="64.0" layoutY="262.0" prefHeight="48.0" prefWidth="145.0" text="CleanGreenCity">
+         <font>
+            <Font name="Ubuntu Bold" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.7342539291049162">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9959577114427861">
+                     <color>
+                        <Color green="0.5094339847564697" blue="0.21226415038108826" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color green="0.6039215922355652" blue="0.25882354378700256" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.0978328213095665" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>

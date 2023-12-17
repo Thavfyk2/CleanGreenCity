@@ -15,33 +15,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Menu;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.IOException;
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.org.cleangreencity.CGCApplication.rootStage;
-import static com.org.cleangreencity.controller.ConnexionPageController.*;
+import static com.org.cleangreencity.controller.ConnexionPageController.currentUser;
 import static com.org.cleangreencity.model.CardModel.*;
 import static com.org.cleangreencity.model.DashboardModel.getCurrentDashboardNameID;
 import static com.org.cleangreencity.model.UserModel.*;
-
 
 public class DashboardController extends ExportController {
 
@@ -49,13 +51,10 @@ public class DashboardController extends ExportController {
     public CardModel selectedCard = new CardModel();
     @FXML
     public MenuBar menu;
-    ObservableList<String> backlogItems = null, inProgressItems = null, toTestItems = null, doneItems = null, deleteItems = null;
-    ObservableList<String> userItems = null;
     @FXML
     public Label incorrectTitleText, welcomeLabel;
     @FXML
     public TextField updateTaskTitle, updateAssignee, search;
-
     @FXML
     public MenuItem saveButton;
     @FXML
@@ -70,30 +69,18 @@ public class DashboardController extends ExportController {
     public ImageView deleteProject, addTeamMember;
     @FXML
     public TextField cmdTextField;
-    @FXML
-    public Label cmdLabel;
-
-    @FXML
-    private TextArea projectDescTextField;
-    @FXML
-    private Label incorrectTitleText2;
+    ObservableList<String> backlogItems = null, inProgressItems = null, toTestItems = null, doneItems = null, deleteItems = null, userItems = null;
     @FXML
     private AnchorPane editTask, addProject, rootPane, cmdPane;
     @FXML
     private TextField teamMember, taskTitle, assignee, projectNameTextField;
     @FXML
-    private TextArea taskDesc, updateTaskDesc;
+    private TextArea taskDesc, updateTaskDesc, projectDescTextField;
     @FXML
     private ListView<String> usersList, backlogList, inProgressList, toTestList, doneList, deleteList;
-
     @FXML
-    private Label backlogLabel, inProgressLabel, toTestLabel, doneLabel;
-
+    private Label backlogLabel, inProgressLabel, toTestLabel, doneLabel, incorrectTitleText2, cmdLabel;
     private boolean isDarkMode = false;
-    public static int countBacklog = 0;
-    public static int countInProgress = 0;
-    public static int countToTest = 0;
-    public static int countDone = 0;
 
     public void initialize() {
         DashboardOfflineController.onLineMode = true;
@@ -189,7 +176,6 @@ public class DashboardController extends ExportController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return cardList;
     }
 
@@ -201,18 +187,17 @@ public class DashboardController extends ExportController {
         doneItems.clear();
         List<CardModel> cardsOfSelectedProject;
 
+        int countBacklog = 0;
+        int countInProgress = 0;
+        int countToTest = 0;
+        int countDone = 0;
+
         if (search.getText() != null)
             cardsOfSelectedProject = getTasksFromDashboard(currentDashboard.getDashboardId(), search.getText());
         else {
             cardsOfSelectedProject = getTasksFromDashboard(currentDashboard.getDashboardId(), null);
 
         }
-
-        countBacklog = 0;
-        countInProgress = 0;
-        countToTest = 0;
-        countDone = 0;
-
 
         for (CardModel card : cardsOfSelectedProject) {
             currentDashboard.setTasks(card);
@@ -235,7 +220,6 @@ public class DashboardController extends ExportController {
                 }
                 default -> {
                 }
-                // Handle the default case if needed
             }
         }
 
@@ -243,7 +227,6 @@ public class DashboardController extends ExportController {
         inProgressLabel.setText("IN PROGRESS " + countInProgress);
         toTestLabel.setText("TO TEST " + countToTest);
         doneLabel.setText("DONE " + countDone);
-
 
         backlogList.setItems(backlogItems);
         inProgressList.setItems(inProgressItems);
@@ -378,17 +361,13 @@ public class DashboardController extends ExportController {
                     System.out.println("No dashboard deleted. Maybe the dashboard with ID: " + obtainProjectId + " doesn't exist.");
                 }
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void addTeamMember() {
-
         teamMember.setVisible(true);
-
-
         try {
             Connection connection = DatabaseConnection.getConnection();
 
@@ -409,7 +388,6 @@ public class DashboardController extends ExportController {
                     }
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -441,7 +419,6 @@ public class DashboardController extends ExportController {
             }
         });
 
-
         toTestList.setOnMouseClicked((MouseEvent event1) -> {
             if (event1.getClickCount() == 2) { // Check if it's a double click
                 selectedItem.set(toTestList.getSelectionModel().getSelectedItem());
@@ -454,7 +431,7 @@ public class DashboardController extends ExportController {
         });
 
         doneList.setOnMouseClicked((MouseEvent event1) -> {
-            if (event1.getClickCount() == 2) { // Check if it's a double click
+            if (event1.getClickCount() == 2) {
                 selectedItem.set(doneList.getSelectionModel().getSelectedItem());
                 try {
                     updateTaskPreparation(selectedItem);
@@ -475,7 +452,6 @@ public class DashboardController extends ExportController {
         CardModel newTask = new CardModel(lastCardId, currentDashboard.getDashboardId(), taskTitle.getText(), taskDesc.getText(), getUserID(assignee.getText()), 0);
 
         try {
-
             Connection connectDB = DatabaseConnection.getConnection();
 
             if (!userIsMemberInCurrentDashboard(connectDB, assignee.getText())) {
@@ -549,10 +525,10 @@ public class DashboardController extends ExportController {
 
         String updateQuery = "UPDATE t_card t SET t.name = ?, t.description = ?, t.user_id = ? WHERE t.card_id = ?";
         PreparedStatement preparedStatement = connectDB.prepareStatement(updateQuery);
-        preparedStatement.setString(1, updateTaskTitle.getText());  // Set new value for the column
-        preparedStatement.setString(2, updateTaskDesc.getText());  // Set value for the condition
-        preparedStatement.setInt(3, getUserID(updateAssignee.getText()));  // Set value for the condition
-        preparedStatement.setInt(4, selectedCard.getCardId());  // Set value for the condition
+        preparedStatement.setString(1, updateTaskTitle.getText());
+        preparedStatement.setString(2, updateTaskDesc.getText());
+        preparedStatement.setInt(3, getUserID(updateAssignee.getText()));
+        preparedStatement.setInt(4, selectedCard.getCardId());
 
         int rowsAffected = preparedStatement.executeUpdate();
 
@@ -622,7 +598,8 @@ public class DashboardController extends ExportController {
         }
     }
 
-    public void darkModeOnAction(MouseEvent event) {
+    @FXML
+    private void darkModeOnAction(MouseEvent event) {
         if (isDarkMode) {
             rootPane.setStyle("-fx-background-color: #FFFFFF;");
             changeAllPaneBackgroundColor("#FFFFFF", rootPane);
@@ -635,7 +612,8 @@ public class DashboardController extends ExportController {
         isDarkMode = !isDarkMode;
     }
 
-    public void cmdOnAction(ActionEvent event) {
+    @FXML
+    private void cmdOnAction(ActionEvent event) {
         String command = cmdTextField.getText().toUpperCase().trim();
         cmdLabel.setText(cmdLabel.getText() + "\n" + command);
         if (cmdTextField.getLayoutY() < 200) {
@@ -685,7 +663,8 @@ public class DashboardController extends ExportController {
         });
     }
 
-    public void disconnectOnAction(MouseEvent event) throws IOException {
+    @FXML
+    private void disconnectOnAction(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(DashboardController.class.getResource("/fxml/ConnexionPageView.fxml")));
         rootStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         rootStage.setResizable(false);
@@ -694,7 +673,8 @@ public class DashboardController extends ExportController {
         rootStage.show();
     }
 
-    public void fullScreenOnAction(MouseEvent event) {
+    @FXML
+    private void fullScreenOnAction(MouseEvent event) {
         rootStage.setFullScreen(!rootStage.isFullScreen());
     }
 
@@ -705,21 +685,24 @@ public class DashboardController extends ExportController {
         rootPane.setEffect(blur);
     }
 
-    public void openCmdOnAction(MouseEvent event) {
+    @FXML
+    private void openCmdOnAction(MouseEvent event) {
         cmdPane.setVisible(true);
         rootPane.setDisable(true);
         GaussianBlur blur = new GaussianBlur(10);
         rootPane.setEffect(blur);
     }
 
-    public void closeNewDashboardTaskOnAction() {
+    @FXML
+    private void closeNewDashboardTaskOnAction() {
         addProject.setVisible(false);
         rootPane.setDisable(false);
         GaussianBlur blur = new GaussianBlur(0);
         rootPane.setEffect(blur);
     }
 
-    public void validateNewDashboardOnAction() {
+    @FXML
+    private void validateNewDashboardOnAction() {
         if (projectNameTextField.getText().isBlank()) {
             incorrectTitleText2.setText("Some information is missing");
         } else {
@@ -784,6 +767,8 @@ public class DashboardController extends ExportController {
         }
     }
 
+    private void handleCreateTaskButton(ActionEvent event) {
+    }
 }
 
 

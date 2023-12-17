@@ -36,8 +36,6 @@ list-view {
     -fx-text-fill: black;
 }
 
-/* Style for the label */
-/* Style for the input field */
 .text-input {
     -fx-font-family: "Ubuntu";
     -fx-border-style: none none solid none;
@@ -61,7 +59,6 @@ list-view {
     -fx-background-radius: 20;
 }
 
-
 .pane2{
     -fx-background-color:linear-gradient(to bottom, #009a42, #017431);
 }
@@ -75,7 +72,6 @@ list-view {
 }
 
 
-/* Hover style */
 .text-input:hover {
     -fx-border-color:#017431;
     -fx-text-fill: #017431;
@@ -86,14 +82,12 @@ list-view {
     -fx-underline: true;
 }
 
-/* Focus style */
 .text-input:focused {
     -fx-border-color: #009a42 ;
     -fx-text-fill: #009a42 ;
     -fx-focus-color: transparent;
 }
 
-/* Disabled style */
 .text-input:disabled {
     -fx-background-color: #eee;
     -fx-text-fill: #999;
@@ -151,7 +145,6 @@ list-view {
 .buttonMenu{
     -fx-text-fill : #2D2D2D;
     -fx-background-color: transparent;
-
 }
 
 .buttonMenuHover{

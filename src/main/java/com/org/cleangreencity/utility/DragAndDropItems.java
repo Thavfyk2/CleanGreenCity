@@ -6,21 +6,17 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.org.cleangreencity.controller.DashboardOfflineController.onLineMode;
 
 
 public class DragAndDropItems {
-
 
     private static final BooleanProperty itemDroppedSuccessfully = new SimpleBooleanProperty(false);
 
@@ -37,14 +33,12 @@ public class DragAndDropItems {
             event.consume();
         });
 
-
         targetListView.setOnDragOver(event -> {
             if (event.getGestureSource() != targetListView && event.getDragboard().hasString()) {
                 event.acceptTransferModes(TransferMode.MOVE);
             }
             event.consume();
         });
-
 
         targetListView.setOnDragDropped(event -> {
             String selectedItem = event.getDragboard().getString();
@@ -70,38 +64,28 @@ public class DragAndDropItems {
 
     private void updateCardPosition(int listViewId, String selectedCard) throws SQLException {
 
-
         int equalIndex = selectedCard.indexOf("-");
         int commaIndex = selectedCard.indexOf('\n', equalIndex);
         String idOfSelectedCard = selectedCard.substring(equalIndex + 1, commaIndex).trim();
         String query;
 
         if (listViewId == -1)
-
             query = "Delete FROM t_card WHERE 10 = ? OR card_id = ? ";
         else
             query = "UPDATE t_card SET position = ? WHERE card_id = ?";
-
 
         try {
             Connection connectDB = DatabaseConnection.getConnection();
             PreparedStatement updateCardPositionStatement = connectDB.prepareStatement(query);
 
+            updateCardPositionStatement.setInt(1, listViewId);
+            updateCardPositionStatement.setInt(2, Integer.parseInt(idOfSelectedCard));
 
-            // Set the new value and condition
-            updateCardPositionStatement.setInt(1, listViewId);  // Replace with the new value
-            updateCardPositionStatement.setInt(2, Integer.parseInt(idOfSelectedCard));  // Replace with the condition value
-
-            // Execute the update statement
-            int rowsAffected = updateCardPositionStatement.executeUpdate();
-
-            // Close the resources
             updateCardPositionStatement.close();
             connectDB.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public int getListViewId(ListView<String> targetListView) {

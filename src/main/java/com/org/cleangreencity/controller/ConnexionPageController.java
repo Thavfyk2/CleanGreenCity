@@ -2,6 +2,7 @@ package com.org.cleangreencity.controller;
 
 import com.org.cleangreencity.CGCApplication;
 import com.org.cleangreencity.model.UserModel;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,21 +19,18 @@ import java.sql.*;
 import java.util.Objects;
 
 public class ConnexionPageController {
+    public static UserModel currentUser = new UserModel();
     public static Stage rootStage;
     public Scene scene;
 
-    public static UserModel currentUser = new UserModel();
     @FXML
     public Button forgotPassword;
-
-
     @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordTextField;
     @FXML
     private Label incorrectEmailOrPasswordText;
-
 
     public static void switchToNewDashboard(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(ConnexionPageController.class.getResource("/fxml/DashboardView.fxml"));
@@ -57,11 +55,9 @@ public class ConnexionPageController {
         CGCApplication.rootStage.show();
     }
 
-
     public void connectButton(ActionEvent event) throws SQLException, IOException {
         if (usernameTextField.getText().isBlank() || passwordTextField.getText().isBlank()) {
             incorrectEmailOrPasswordText.setText("Some information are missing");
-            //incorrectEmailOrPasswordText.setFill(red);
             incorrectEmailOrPasswordText.setVisible(true);
         } else {
             currentUser.setUsername(usernameTextField.getText());
@@ -93,7 +89,6 @@ public class ConnexionPageController {
                     switchToNewDashboard(event);
                 } else {
                     incorrectEmailOrPasswordText.setText("Invalid username or password");
-
                 }
                 statementLoginUsername.close();
                 queryResultLoginUsername.close();
@@ -102,7 +97,6 @@ public class ConnexionPageController {
             }
         }
     }
-
 
     @FXML
     private void switchToInscription(ActionEvent event) throws IOException {
@@ -113,7 +107,6 @@ public class ConnexionPageController {
         rootStage.setScene(scene);
         rootStage.show();
     }
-
 
     public void onForgotPassword(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ChangePasswordView.fxml")));

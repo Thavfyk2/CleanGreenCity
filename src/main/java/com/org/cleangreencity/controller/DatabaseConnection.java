@@ -8,7 +8,7 @@ public class DatabaseConnection {
         String databaseName = "trellu_db";
         String databaseUser = "roott";
         String databasePassword = "root";
-        String url = "jdbc:mysql://localhost:3306/" + databaseName;
+        String url = "jdbc:mysql://localhost:3307/" + databaseName;
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class CGCApplication extends Application {
-
-    public static DatabaseConnection connectNow;
     public static Stage rootStage;
     @Override
     public void start(Stage stage) throws IOException {

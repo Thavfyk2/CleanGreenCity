@@ -150,10 +150,8 @@ public class DashboardController extends ExportController {
         List<CardModel> cardList = new ArrayList<>();
         String query;
         try {
-
             Connection connectDB = DatabaseConnection.getConnection();
             Statement statement = connectDB.createStatement();
-
             if (searchTaskName == null) query = "SELECT * FROM t_card WHERE dashboard_id = " + dashboardId;
             else
                 query = "SELECT * FROM t_card WHERE name LIKE '%" + searchTaskName + "%' AND dashboard_id = " + dashboardId;
